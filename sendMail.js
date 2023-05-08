@@ -25,10 +25,14 @@ const mailOptions = {
 }
 
 
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log("Email sent" + info.response);
+const emailTransport = async () => {
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log("Email sent successfully")
+    } catch(err) {
+        console.log(err);
     }
-});
+
+}
+
+emailTransport();
